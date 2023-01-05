@@ -10,6 +10,8 @@ class Character {
         this.x = 0;
         this.y = 0;
         this.index = 6;
+        this.canvasWidth = 1000;
+        this.canvasHeight = 732;
 
         // Get the spriteshhett
         this.spritesheet = ASSET_MANAGER.getAsset("./sprites/MaleCasual.png");
@@ -52,19 +54,35 @@ class Character {
     // This is the update method called on each frame.
     update() {
 
+        // Dont let the player go off screen(x direction)
+        if(this.x > this.canvasWidth) {
+            this.x = this.canvasWidth;
+        }
+
+        if(this.x < 0) {
+            this.x = 0;
+        }
+
+        // Dont let the player go off screen(y direction)
+        if(this.y > this.canvasHeight) {
+            this.y = this.canvasHeight;
+        }
+
+        if(this.y < 0) {
+            this.y = 0;
+        }
 
         // Update based on player movement.
-        // TODO: account gor upper case.
-        if (this.game.keys["d"]) {
+        if (this.game.keys["d"] || this.game.keys["D"]) {
             this.x += this.speed * this.game.clockTick;
             this.index = 0;
-        } else if (this.game.keys["a"]) {
+        } else if (this.game.keys["a"] || this.game.keys["A"]) {
             this.x -= this.speed * this.game.clockTick;
             this.index = 1;
-        } else if (this.game.keys["w"]) {
+        } else if (this.game.keys["w"] || this.game.keys["W"]) {
             this.y -= this.speed * this.game.clockTick;
             this.index = 2;
-        } else if (this.game.keys["s"]) {
+        } else if (this.game.keys["s"] || this.game.keys["S"]) {
             this.y += this.speed * this.game.clockTick;
             this.index = 3;
         } else {
