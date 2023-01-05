@@ -54,16 +54,17 @@ class Character {
 
 
         // Update based on player movement.
-        if (this.game.keys["d"] || this.game.keys["D"]) {
+        // TODO: account gor upper case.
+        if (this.game.keys["d"]) {
             this.x += this.speed * this.game.clockTick;
             this.index = 0;
-        } else if (this.game.keys["a"] || this.game.keys["A"]) {
+        } else if (this.game.keys["a"]) {
             this.x -= this.speed * this.game.clockTick;
             this.index = 1;
-        } else if (this.game.keys["w"] || this.game.keys["W"]) {
+        } else if (this.game.keys["w"]) {
             this.y -= this.speed * this.game.clockTick;
             this.index = 2;
-        } else if (this.game.keys["s"] || this.game.keys["S"]) {
+        } else if (this.game.keys["s"]) {
             this.y += this.speed * this.game.clockTick;
             this.index = 3;
         } else {
